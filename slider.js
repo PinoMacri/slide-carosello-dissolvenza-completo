@@ -102,10 +102,21 @@ left.addEventListener("click", function () {
 })
 
 
-const manuale = document.getElementById("manuale")
+
 const automatico = document.getElementById("automatico")
 let slide;
-automatico.addEventListener("click", function(){
+let flag = false
+automatico.addEventListener("click", function () {
+  flag = !flag
+  console.log(flag)
+  if (flag) {
+    automatico.innerHTML=`<i class="fa-regular fa-circle-play"></i> Play`
+    automatico.classList.add("activet")
+    clearInterval(clock)
+    clearInterval(slide)
+  } else if (flag===false) {
+    automatico.innerHTML= `<i class="fa-regular fa-circle-pause"></i> Stop`
+    automatico.classList.remove("activet")
     slide = setInterval(myFunction, 3000);
     function myFunction() {
         images[currentActive].classList.remove("active")
@@ -117,15 +128,10 @@ automatico.addEventListener("click", function(){
         images[currentActive].classList.add("active")
         thumbs[currentActive].classList.add("actives")
     }
-    automatico.classList.add("activet")
-    manuale.classList.remove("activet")
+    
+  }
 })
-manuale.addEventListener("click", function () {
-    clearInterval(clock)
-    clearInterval(slide)
-    automatico.classList.remove("activet")
-    manuale.classList.add("activet")
-})
+
 
 
 
