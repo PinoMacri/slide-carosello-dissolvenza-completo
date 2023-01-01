@@ -7,17 +7,14 @@ body {
     animation: gradient 15s ease infinite;
     height: 100vh;
 }
-
 .padre {
     text-align: center;
     width: 600px;
     height: 600px;
-  
     position: relative
 }
 .nonno {
     margin-top: 50px;
-
 }
 .carosello {
     object-fit: cover;
@@ -27,44 +24,41 @@ body {
     transform: translate(-50%);
     width: 100%;
     height: 100%;
+    border-radius: 50px;
 
     transition-property: opacity;
-    transition-timing-function: ease-in-out ;
+    transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    transition-duration: 2.6s ;
+    transition-duration: 2.6s;
     opacity: 0;
-    
+
 }
 .active {
     display: block;
     opacity: 1;
     backface-visibility: hidden;
     transition-property: opacity;
-    transition-timing-function: ease-in-out ;
+    transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    transition-duration: 2.6s ;
+    transition-duration: 2.6s;
 }
 .figlio {
     width: 100%;
-
 }
+
 .figlio div {
     margin-top: 20px;
     width: 300px;
     height: 200px;
-
 }
-.thumb  {
+.thumb {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
     border-radius: 40px;
     opacity: 0.5;
-
 }
-
-    
 
 .thumb:hover {
     box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em red;
@@ -72,19 +66,18 @@ body {
 }
 .standard {
     transition-property: opacity;
-    transition-timing-function: ease-in-out ;
+    transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    transition-duration: 2.6s ;
+    transition-duration: 2.6s;
 
     opacity: 0.5;
 }
 .actives {
-opacity: 1;
-box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em red;
-
-backface-visibility: hidden;
-    transition-property: opacity , box-shadow;
-    transition-timing-function: ease-in-out ;
+    opacity: 1;
+    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em red;
+    backface-visibility: hidden;
+    transition-property: opacity, box-shadow;
+    transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    transition-duration: 2.6s ;
+    transition-duration: 2.6s;
 }

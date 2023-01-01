@@ -9,18 +9,10 @@ const sources = [
 const padre = document.getElementById("padres")
 const figlios = document.getElementById("figlios")
 for (let i = 0; i < sources.length; i++) {
-    const divUno = document.createElement("div")
-    const divDue = document.createElement("div")
-    const imageElement = document.createElement("img")
-    const thumbElement = document.createElement("img")
-    imageElement.classList.add("carosello")
-    imageElement.src = sources[i];
-    thumbElement.classList.add("thumb")
-    thumbElement.src = sources[i];
-    divUno.appendChild(imageElement)
-    divDue.appendChild(thumbElement)
-    padre.appendChild(divUno)
-    figlios.appendChild(divDue)
+    const divImg = `<div><img class="carosello" src=${sources[i]} alt=""></div>`
+    padre.innerHTML += divImg
+    const divThumb = `<div><img class="thumb" src=${sources[i]} alt=""></div>`
+    figlios.innerHTML += divThumb
 }
 const images = document.querySelectorAll("#padres img")
 const thumbs = document.querySelectorAll(".thumb")
