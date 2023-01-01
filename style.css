@@ -16,6 +16,8 @@ body {
 .nonno {
     margin-top: 50px;
 }
+/*! Setto la classe delle immagini del carosello con la transizione del box-shadow e dell'opacity 
+/*! Per far avere l'effetto dissolvenza anche all'immagine in uscita */
 .carosello {
     object-fit: cover;
     position: absolute;
@@ -26,22 +28,28 @@ body {
     height: 100%;
     border-radius: 50px;
 
-    transition-property: opacity;
+    transition-property: opacity , box-shadow;
     transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    transition-duration: 2.6s;
+    /**Più sarù alta la transision-duration più l'effetto dissolvenza sarà evidente*/
+    transition-duration: 1.0s;
     opacity: 0;
-
+    box-shadow: 0;
 }
+/*! Setto la classe active delle immagini del carosello, al posto di display block 
+/*! (Tecnica usata se avessi fatto il carosello normale senza dissolvenza) ho inserito opacity 1,
+/*! in modo tale che l'immagine in entrata andra in dissolvenza */
 .active {
-    display: block;
+    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em red;
     opacity: 1;
     backface-visibility: hidden;
-    transition-property: opacity;
+    transition-property: opacity , box-shadow;
     transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    transition-duration: 2.6s;
+    /**Più sarù alta la transision-duration più l'effetto dissolvenza sarà evidente*/
+    transition-duration: 1.0s;
 }
+/*!---------------CON QUESTA DOPPIA TRANSIZIONE AVRO 2 EFFETTI DISSOLVENZA, LO AVRA SIA L'IMMAGINE CHE ABBANDONERA' LA SCENA SIA A QUELLA CHE SUBENTRERA*/
 .figlio {
     width: 100%;
 }
@@ -51,6 +59,8 @@ body {
     width: 300px;
     height: 200px;
 }
+/*! Setto la classe delle thumbnails con la transizione del box-shadow e dell'opacity 
+/*! Per far avere l'effetto dissolvenza anche al thumbnails in uscita */
 .thumb {
     width: 100%;
     height: 100%;
@@ -58,20 +68,21 @@ body {
     cursor: pointer;
     border-radius: 40px;
     opacity: 0.5;
+    box-shadow: 0;
+  
+    transition-property: opacity , box-shadow;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    /**Più sarù alta la transision-duration più l'effetto dissolvenza sarà evidente*/
+    transition-duration: 1.0s;
 }
-
 .thumb:hover {
     box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em red;
     opacity: 1;
 }
-.standard {
-    transition-property: opacity;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    transition-duration: 2.6s;
-
-    opacity: 0.5;
-}
+/*! Setto la classe active delle thumbnails, al posto di display block 
+/*! (Tecnica usata se avessi fatto il carosello/thumbnails normale senza dissolvenza) ho inserito opacity 1,
+/*! in modo tale che il thumbnails in entrata andra in dissolvenza */
 .actives {
     opacity: 1;
     box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em red;
@@ -79,5 +90,30 @@ body {
     transition-property: opacity, box-shadow;
     transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    transition-duration: 2.6s;
+    /**Più sarù alta la transision-duration più l'effetto dissolvenza sarà evidente*/
+    transition-duration: 1.0s;
+}
+
+
+#left {
+    font-size: 50px;
+    position: absolute;
+    left: 500px;
+    top: 38%;
+    transform: translatey(-50%);
+    cursor: pointer;
+}
+#left:hover {
+    color: blue;
+}
+#right {
+    font-size: 50px;
+    position: absolute;
+    right: 500px;
+    top: 38%;
+    transform: translatey(-50%);
+    cursor: pointer;
+}
+#right:hover {
+    color: blue;
 }
