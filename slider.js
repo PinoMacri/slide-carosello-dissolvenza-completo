@@ -52,6 +52,8 @@ function myFunction() {
     images[currentActive].classList.add("active")
     thumbs[currentActive].classList.add("actives")
 }
+
+
 //------------------------------------------------------------------------------------------------------------------
 //! 7) 
 //* Quando clicco il thumbnail, lo lascio selezionato deselezionando l'altro e lo faccio apparire nel carosello
@@ -74,7 +76,7 @@ const right = document.getElementById("right")
 e lascio selezionato il thumbnails successivo,
 Creo il controllo nel caso in cui siamo arrivati dopo l'ultima immagine
 riniziamo dalla prima */
-right.addEventListener("click" , function(){
+right.addEventListener("click", function () {
     images[currentActive].classList.remove("active")
     thumbs[currentActive].classList.remove("actives")
     currentActive++
@@ -88,11 +90,11 @@ right.addEventListener("click" , function(){
 e lascio selezionato il thumbnails precedente,
 Creo il controllo nel caso in cui siamo arrivati prima della prima immagine
 riniziamo dall'ultima */
-left.addEventListener("click" , function(){
+left.addEventListener("click", function () {
     images[currentActive].classList.remove("active")
     thumbs[currentActive].classList.remove("actives")
     currentActive--
-    if (currentActive < 0 ) {
+    if (currentActive < 0) {
         currentActive = 5
     }
     images[currentActive].classList.add("active")
@@ -100,6 +102,30 @@ left.addEventListener("click" , function(){
 })
 
 
+const manuale = document.getElementById("manuale")
+const automatico = document.getElementById("automatico")
+let slide;
+automatico.addEventListener("click", function(){
+    slide = setInterval(myFunction, 3000);
+    function myFunction() {
+        images[currentActive].classList.remove("active")
+        thumbs[currentActive].classList.remove("actives")
+        currentActive++
+        if (currentActive === images.length) {
+            currentActive = 0
+        }
+        images[currentActive].classList.add("active")
+        thumbs[currentActive].classList.add("actives")
+    }
+    automatico.classList.add("activet")
+    manuale.classList.remove("activet")
+})
+manuale.addEventListener("click", function () {
+    clearInterval(clock)
+    clearInterval(slide)
+    automatico.classList.remove("activet")
+    manuale.classList.add("activet")
+})
 
 
 
