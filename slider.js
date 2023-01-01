@@ -102,35 +102,42 @@ left.addEventListener("click", function () {
 })
 
 
-
+const stopPlay = document.getElementById("stopPlay")
 const automatico = document.getElementById("automatico")
+const contrario = document.getElementById("contrario")
+
 let slide;
 let flag = false
 automatico.addEventListener("click", function () {
-  flag = !flag
-  console.log(flag)
-  if (flag) {
-    automatico.innerHTML=`<i class="fa-regular fa-circle-play"></i> Play`
-    automatico.classList.add("activet")
-    clearInterval(clock)
-    clearInterval(slide)
-  } else if (flag===false) {
-    automatico.innerHTML= `<i class="fa-regular fa-circle-pause"></i> Stop`
-    automatico.classList.remove("activet")
-    slide = setInterval(myFunction, 3000);
-    function myFunction() {
-        images[currentActive].classList.remove("active")
-        thumbs[currentActive].classList.remove("actives")
-        currentActive++
-        if (currentActive === images.length) {
-            currentActive = 0
+    flag = !flag
+    console.log(flag)
+    if (flag) {
+        stopPlay.title = "PLAY"
+        stopPlay.innerHTML = `<i class="fa-regular fa-circle-play"></i>  `
+        automatico.classList.add("activet")
+        clearInterval(clock)
+        clearInterval(slide)
+    } else if (flag === false) {
+        stopPlay.title = "STOP"
+        stopPlay.innerHTML = `<i class="fa-regular fa-circle-pause"></i> `
+        automatico.classList.remove("activet")
+        slide = setInterval(myFunzione, 3000);
+        function myFunzione() {
+            images[currentActive].classList.remove("active")
+            thumbs[currentActive].classList.remove("actives")
+            currentActive++
+            if (currentActive === images.length) {
+                currentActive = 0
+            }
+            images[currentActive].classList.add("active")
+            thumbs[currentActive].classList.add("actives")
         }
-        images[currentActive].classList.add("active")
-        thumbs[currentActive].classList.add("actives")
     }
-    
-  }
 })
+
+
+
+
 
 
 

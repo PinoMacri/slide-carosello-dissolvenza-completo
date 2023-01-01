@@ -17,9 +17,7 @@
 <body>
 
   <div class="nonno d-flex flex-column align-items-center">
-    <!-- BOTTONI NEXT&PREV SLIDE & THUMBNAIL -->
-    <i id="left" class="fa-solid fa-circle-arrow-left"></i>
-    <i id="right" class="fa-solid fa-circle-arrow-right"></i>
+
     <!-- IMMAGINI -->
     <div id="padres" class="padre">
 
@@ -30,11 +28,23 @@
     </div>
     <!-- THUMBNAIL -->
   </div>
-  <!-- BOTTONI NEXT&PREV START&STOP SLIDER -->
-  <div class="text-center mt-5 d-flex justify-content-around">
-    <button id="automatico" class="slider"><i class="fa-regular fa-circle-pause"></i> Stop</button>
-    
+
+  <div id="nonnoBottoni" class="d-flex justify-content-center mt-4">
+
+    <div id="padreBottoni" class="text-center mt-2 d-flex justify-content-around align-items-center">
+      
+      <abbr title="BACK"><i id="left" class="fa-solid fa-backward-step"></i> </abbr>
+
+        <button id="automatico"> <abbr id="stopPlay" title="STOP"><i class="fa-regular fa-circle-pause"></i></abbr>
+        </button>
+
+      <abbr title="NEXT"><i id="right" class="fa-sharp fa-solid fa-forward-step"></i></abbr>
+
+
+    </div>
+
   </div>
+
   <script src="slider.js"></script>
 </body>
 
