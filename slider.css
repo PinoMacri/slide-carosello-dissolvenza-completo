@@ -125,6 +125,7 @@ body {
 #playing {
     padding-top: 50px;
 }
+/*! Setto le classi da aggiungere in html o js dei bottoni all'hover e non */
 #reverse {
     font-size: 50px;
     background-color: transparent;
