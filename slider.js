@@ -41,7 +41,7 @@ thumbs[currentActive].classList.add("actives")
 //------------------------------------------------------------------------------------------------------------------
 //! 6) 
 //* Creo la funzion per far scorrere ogni 3 secondi le immagini del carosello e delle thumbnail
-const clock = setInterval(myFunction, 3000);
+let clock = setInterval(myFunction, 3000);
 function myFunction() {
     images[currentActive].classList.remove("active")
     thumbs[currentActive].classList.remove("actives")
@@ -134,6 +134,59 @@ automatico.addEventListener("click", function () {
         }
     }
 })
+
+const reverse = document.getElementById("reverse")
+let optional;
+let flags = false;
+let reverseSlide;
+let optionalSlide;
+
+
+
+
+
+reverse.addEventListener("click", function () {
+    flags = !flags
+    if (flags) {
+        reverse.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
+        
+        automatico.disabled = true;
+        clearInterval(clock)
+        clearInterval(optional)
+
+        reverseSlide = setInterval(myFunziones, 3000);
+        function myFunziones() {
+            images[currentActive].classList.remove("active")
+            thumbs[currentActive].classList.remove("actives")
+            currentActive--
+            if (currentActive < 0) {
+                currentActive = 5
+            }
+            images[currentActive].classList.add("active")
+            thumbs[currentActive].classList.add("actives")
+        }
+
+    } else if (flags === false) {
+        reverse.innerHTML = `<i class="fa-solid fa-arrow-rotate-left">`
+        automatico.disabled = false;
+        clearInterval(reverseSlide)
+
+        optional = setInterval(myFunzionek, 3000);
+        function myFunzionek() {
+            images[currentActive].classList.remove("active")
+            thumbs[currentActive].classList.remove("actives")
+            currentActive++
+            if (currentActive === images.length) {
+                currentActive = 0
+            }
+            images[currentActive].classList.add("active")
+            thumbs[currentActive].classList.add("actives")
+        }
+
+
+    }
+})
+
 
 
 
