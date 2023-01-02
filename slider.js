@@ -136,6 +136,7 @@ let reverseSlide;
 /* Creo la flag che mi servirà per gestire il bottone*/
 let flags = false;
 /* Le slide di img e thumb torneranno indietro ogni 3 secondi */
+let hover = document.querySelectorAll("#reverse:hover")
 reverse.addEventListener("click", function (){
     noPlay.title = "STOP REVERSE START"
     flags = !flags
