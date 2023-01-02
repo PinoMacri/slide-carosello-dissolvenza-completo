@@ -41,17 +41,7 @@ thumbs[currentActive].classList.add("actives")
 //------------------------------------------------------------------------------------------------------------------
 //! 6) 
 //* Creo la funzion per far scorrere ogni 3 secondi le immagini del carosello e delle thumbnail
-let clock = setInterval(myFunction, 3000);
-function myFunction() {
-    images[currentActive].classList.remove("active")
-    thumbs[currentActive].classList.remove("actives")
-    currentActive++
-    if (currentActive === images.length) {
-        currentActive = 0
-    }
-    images[currentActive].classList.add("active")
-    thumbs[currentActive].classList.add("actives")
-}
+
 
 
 //------------------------------------------------------------------------------------------------------------------
@@ -104,25 +94,24 @@ left.addEventListener("click", function () {
 
 const stopPlay = document.getElementById("stopPlay")
 const automatico = document.getElementById("automatico")
-const contrario = document.getElementById("contrario")
+const reverse = document.getElementById("reverse")
+
+
 
 let slide;
 let flag = false
+
+
+
+
+
 automatico.addEventListener("click", function () {
     flag = !flag
-    console.log(flag)
+    stopPlay.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
     if (flag) {
-        stopPlay.title = "PLAY"
-        stopPlay.innerHTML = `<i class="fa-regular fa-circle-play"></i>  `
-        automatico.classList.add("activet")
-        clearInterval(clock)
-        clearInterval(slide)
-    } else if (flag === false) {
-        stopPlay.title = "STOP"
-        stopPlay.innerHTML = `<i class="fa-regular fa-circle-pause"></i> `
-        automatico.classList.remove("activet")
-        slide = setInterval(myFunzione, 3000);
-        function myFunzione() {
+        reverse.disabled = true;
+        slide = setInterval(myFunction, 3000);
+        function myFunction() {
             images[currentActive].classList.remove("active")
             thumbs[currentActive].classList.remove("actives")
             currentActive++
@@ -132,60 +121,42 @@ automatico.addEventListener("click", function () {
             images[currentActive].classList.add("active")
             thumbs[currentActive].classList.add("actives")
         }
+    } else if (flag === false) {
+        reverse.disabled = false;
+        clearInterval(slide)
+        stopPlay.innerHTML = `<i class="fa-regular fa-circle-play"></i>`
+
     }
+ 
 })
 
-const reverse = document.getElementById("reverse")
-let optional;
-let flags = false;
 let reverseSlide;
-let optionalSlide;
-
-
-
-
-
-reverse.addEventListener("click", function () {
+let flags = false;
+reverse.addEventListener("click", function (){
     flags = !flags
-    if (flags) {
-        reverse.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
-        
+    reverse.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
+    if (flags){
         automatico.disabled = true;
-        clearInterval(clock)
-        clearInterval(optional)
-
-        reverseSlide = setInterval(myFunziones, 3000);
-        function myFunziones() {
+        reverseSlide = setInterval(myFunctions, 3000);
+        function myFunctions(){
             images[currentActive].classList.remove("active")
             thumbs[currentActive].classList.remove("actives")
             currentActive--
-            if (currentActive < 0) {
+            if (currentActive  < 0) {
                 currentActive = 5
             }
             images[currentActive].classList.add("active")
             thumbs[currentActive].classList.add("actives")
         }
-
     } else if (flags === false) {
-        reverse.innerHTML = `<i class="fa-solid fa-arrow-rotate-left">`
-        automatico.disabled = false;
         clearInterval(reverseSlide)
-
-        optional = setInterval(myFunzionek, 3000);
-        function myFunzionek() {
-            images[currentActive].classList.remove("active")
-            thumbs[currentActive].classList.remove("actives")
-            currentActive++
-            if (currentActive === images.length) {
-                currentActive = 0
-            }
-            images[currentActive].classList.add("active")
-            thumbs[currentActive].classList.add("actives")
-        }
-
-
+        automatico.disabled=false;
+        reverse.innerHTML = `<i class="fa-solid fa-arrow-rotate-left"></i>`
     }
+    console.log(flags)
 })
+
+
 
 
 
