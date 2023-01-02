@@ -105,6 +105,7 @@ body {
 }
 #left:hover {
     transform: scale(1.1);
+    color: blue;
 }
 #right {
     font-size: 50px;
@@ -113,20 +114,9 @@ body {
 }
 #right:hover {
     transform: scale(1.1);
+    color: blue;
 }
 .slider:hover {
-    transform: scale(1.1);
-}
-#automatico {
-    cursor: pointer;
-    font-size: 50px;
-    background-color: transparent;
-    border: none;
-}
-#stopPlay {
-    cursor: pointer;
-}
-#automatico:hover {
     transform: scale(1.1);
 }
 .fastActivites {
@@ -136,16 +126,33 @@ body {
     padding-top: 50px;
 }
 #reverse {
-    cursor:pointer;
     font-size: 50px;
     background-color: transparent;
     border: none; 
 }
-#reverse:hover {
+.revo:hover {
     transform: scale(1.1);
+    color: blue;
 }
-#noPlay {
+.spento:hover {
+    cursor: pointer ;
+}
+.default:hover {
+    cursor: default !important;
+}
+#automatico {
+    
+    font-size: 50px;
+    background-color: transparent;
+    border: none;
+}
+.automaticos:hover {
+    transform: scale(1.1);
+    color: blue;
+}
+.automaticok:hover {
     cursor: pointer;
 }
+
 
 
