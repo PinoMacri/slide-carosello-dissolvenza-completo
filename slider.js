@@ -95,6 +95,8 @@ left.addEventListener("click", function () {
 const stopPlay = document.getElementById("stopPlay")
 const automatico = document.getElementById("automatico")
 const reverse = document.getElementById("reverse")
+const noPlay = document.getElementById("noPlay")
+
 
 
 
@@ -108,6 +110,7 @@ let flag = false
 automatico.addEventListener("click", function () {
     flag = !flag
     stopPlay.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
+    stopPlay.title ="STOP"
     if (flag) {
         reverse.disabled = true;
         slide = setInterval(myFunction, 3000);
@@ -125,16 +128,17 @@ automatico.addEventListener("click", function () {
         reverse.disabled = false;
         clearInterval(slide)
         stopPlay.innerHTML = `<i class="fa-regular fa-circle-play"></i>`
-
+        stopPlay.title ="START"
     }
- 
 })
 
 let reverseSlide;
 let flags = false;
 reverse.addEventListener("click", function (){
+    noPlay.title = "STOP REVERSE START"
     flags = !flags
-    reverse.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
+    noPlay.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
+    
     if (flags){
         automatico.disabled = true;
         reverseSlide = setInterval(myFunctions, 3000);
@@ -151,7 +155,8 @@ reverse.addEventListener("click", function (){
     } else if (flags === false) {
         clearInterval(reverseSlide)
         automatico.disabled=false;
-        reverse.innerHTML = `<i class="fa-solid fa-arrow-rotate-left"></i>`
+        noPlay.innerHTML = `<i class="fa-solid fa-arrow-rotate-left"></i>`
+        noPlay.title="REVERSE START"
     }
     console.log(flags)
 })
