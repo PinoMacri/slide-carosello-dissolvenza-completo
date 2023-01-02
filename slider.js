@@ -1,5 +1,7 @@
-//! CAROSELLO CON MODALITA' DISSOLVENZA AUTOMATICA SIA DELLE IMMAGINI CHE DEI THUMBNAILS COMPLETO FATTO A MANO
+//! CAROSELLO CON MODALITA' DISSOLVENZA AUTOMATICA SIA DELLE IMMAGINI CHE DEI THUMBNAILS COMPLETO FATTO A MANO, FULL-OPTIONAL
 
+//! 0) 
+//*Prima di iniziare la logica crea il tutto in html per aggiustarlo con CSS, dopo di che cancellare e rifare dinamicamente
 //! 1) 
 //* Preparo l'array con gli URL delle immagini, servono per crearle dinamicamente sotto
 const sources = [
@@ -17,7 +19,7 @@ const padre = document.getElementById("padres")
 const figlios = document.getElementById("figlios")
 //------------------------------------------------------------------------------------------------------------------
 //! 3) 
-//* Genero le immagini e i thumbnails
+//* Genero le immagini e i thumbnails DINAMICI
 for (let i = 0; i < sources.length; i++) {
     const divImg = `<div><img class="carosello" src=${sources[i]} alt=""></div>`
     padre.innerHTML += divImg
@@ -40,12 +42,6 @@ images[currentActive].classList.add("active")
 thumbs[currentActive].classList.add("actives")
 //------------------------------------------------------------------------------------------------------------------
 //! 6) 
-//* Creo la funzion per far scorrere ogni 3 secondi le immagini del carosello e delle thumbnail
-
-
-
-//------------------------------------------------------------------------------------------------------------------
-//! 7) 
 //* Quando clicco il thumbnail, lo lascio selezionato deselezionando l'altro e lo faccio apparire nel carosello
 for (let i = 0; i < thumbs.length; i++) {
     const thumb = thumbs[i]
@@ -58,7 +54,7 @@ for (let i = 0; i < thumbs.length; i++) {
     })
 }
 //------------------------------------------------------------------------------------------------------------------
-//! 8) 
+//! 7) 
 //* Opzionale: posso scorrere le immagini anche con i bottoni
 const left = document.getElementById("left")
 const right = document.getElementById("right")
@@ -90,23 +86,24 @@ left.addEventListener("click", function () {
     images[currentActive].classList.add("active")
     thumbs[currentActive].classList.add("actives")
 })
-
-
+//------------------------------------------------------------------------------------------------------------------
+//! 8) 
+//* Al click del "PLAY", faccio partire le immagini e i thumbnails in automatico 
+/* Prendo dalla pagina ciò che mi serve sia per il PLAY che per il REVERSE,
+Prendo tutto subito perche gia qui mi servirà il reverse per farlo disabilitare
+una volta che clicco il play
+Prendo anche gli ABBR perchè mi serviranno per agganciarli dopo e cambiargli
+il title, in modo che una volta che passo sopra col mouse mi indicheranno
+la funzionalita del bottone */
 const stopPlay = document.getElementById("stopPlay")
 const automatico = document.getElementById("automatico")
 const reverse = document.getElementById("reverse")
 const noPlay = document.getElementById("noPlay")
-
-
-
-
+/* Creo la variabile da appoggio dove andrò ad agganciare la function per le slide */
 let slide;
+/* Creo la flag che mi servirà per gestire il bottone*/
 let flag = false
-
-
-
-
-
+/* Le slide di img e thumb Cambieranno ogni 3 secondi */
 automatico.addEventListener("click", function () {
     flag = !flag
     stopPlay.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
@@ -131,14 +128,18 @@ automatico.addEventListener("click", function () {
         stopPlay.title ="START"
     }
 })
-
+//------------------------------------------------------------------------------------------------------------------
+//! 9) 
+//* Al click del "REVERSE", faccio partire le immagini e i thumbnails al contrario in automatico 
+/* Creo la variabile da appoggio dove andrò ad agganciare la function reverse per le slide*/
 let reverseSlide;
+/* Creo la flag che mi servirà per gestire il bottone*/
 let flags = false;
+/* Le slide di img e thumb torneranno indietro ogni 3 secondi */
 reverse.addEventListener("click", function (){
     noPlay.title = "STOP REVERSE START"
     flags = !flags
     noPlay.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`
-    
     if (flags){
         automatico.disabled = true;
         reverseSlide = setInterval(myFunctions, 3000);
